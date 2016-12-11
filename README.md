@@ -1,7 +1,7 @@
 # dolores
 Youtube assistant with the help of castnow.
 This app is for casting youtube videos to the nearby chromecast. This app downloads the youtube video from the youtube channel provided
-and then casts to the chromecast. Idea is to play from youtube on my chromecase as soon as I reach home but, this is the first step 
+and then casts to the chromecast. Idea is to play from youtube on my chromecast as soon as I reach home but, this is the first step 
 of that project. (Casting youtube videos). Im using a raspberry-pi as the source machine.
 
 Requires castnow and youtube-dl. Links:
