@@ -4,7 +4,7 @@ This app is for casting youtube videos to the nearby chromecast. This app downlo
 and then casts to the chromecast. Idea is to play from youtube on my chromecast as soon as I reach home but, this is the first step 
 of that project. (Casting youtube videos). Im using a raspberry-pi as the source machine.
 
-Requires castnow and youtube-dl. Links:
+Requires castnow, youtube-dl and php (I know). Links:
 
 castnow: https://github.com/xat/castnow
 
@@ -22,3 +22,7 @@ channel_list="channel_id"
 or 
 
 channel_list="channel_id1,channel_id2"
+
+Im running it from cron as of now. You can run it manually 
+
+php youtube-castnow.php
