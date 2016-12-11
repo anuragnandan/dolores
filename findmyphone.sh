@@ -5,7 +5,7 @@
 COUNT=`/bin/ps -ef | /bin/grep findmyphone | wc | awk -F " " '{print $1}'`
 if [ $COUNT -gt 3 ]
 then
-  echo "Already running previous instancet"
+  echo "Already running previous instance. Exiting."
 	exit 1
 fi
 
