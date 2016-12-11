@@ -2,9 +2,10 @@
 #Run this process to find your phone. This process takes an argument to search for a pattern over all the devices connected devices to the wifi router.
 #Giving the mac address of the phone is suggested.
 
-`/bin/ps -ef | /bin/grep findmyphone | /bin/grep -v grep`
-if [ $? -eq 1 ]
-	then
+COUNT=`/bin/ps -ef | /bin/grep findmyphone | wc | awk -F " " '{print $1}'`
+if [ $COUNT -gt 3 ]
+then
+  echo "Already running previous instancet"
 	exit 1
 fi
 
