@@ -1,8 +1,12 @@
 # dolores
 Youtube assistant with the help of castnow.
 This app is for casting youtube videos to the nearby chromecast. This app downloads the youtube video from the youtube channel provided
-and then casts to the chromecast. Idea is to play from youtube on my chromecast as soon as I reach home but, this is the first step 
-of that project. (Casting youtube videos). Im using a raspberry-pi as the source machine.
+and then casts to the chromecast. Idea is to play from youtube on my chromecast as soon as I reach home. Im using a raspberry-pi as the source machine.
+This app searches my phone on the connected devices list for the router. As soon as I reach home, my phone auto-connects to wifi and hence, that will trigger the youtube-castnow app
+
+finmyphone.sh requires an argument as a search parameter to search the wifi devices connected. I usually give my Iphone's MAC addres.
+
+sh findmyphone.sh MAC_ADDRESS
 
 Requires castnow, youtube-dl and php (I know). Links:
 
@@ -23,6 +27,6 @@ or
 
 channel_list="channel_id1,channel_id2"
 
-Im running it from cron as of now. You can run it manually 
+Im running "findmyphone.sh" from cron as of now at 3PM weekdays. You can run it manually 
 
 php youtube-castnow.php
