@@ -3,7 +3,7 @@
 #Giving the mac address of the phone is suggested.
 
 COUNT=`/bin/ps -ef | /bin/grep findmyphone | wc | awk -F " " '{print $1}'`
-if [ $COUNT -gt 3 ]
+if [ $COUNT -gt 4 ]
 then
   echo "Already running previous instancet"
 	exit 1
@@ -19,13 +19,15 @@ then
 fi
 
 while [ 1 ]; do
-  `/usr/bin/sudo nmap -p 5353 -sV -O $SUBNET | /bin/grep \'$PATTERN\'`
+  OUT=`/usr/bin/sudo nmap -p 5353 -sV -O $SUBNET | /bin/grep $PATTERN`
 
-  if [ $? -eq 0 ]
+  if [ -z "$OUT" ]
   then
-    `/usr/bin/sudo php $PATH/youtube-castnow.php &`
-    exit 1
-	else
+    echo "Not found.\n"
 		`/bin/sleep 5`
-  fi
+  else
+    echo "Found.\n"
+    `/usr/bin/sudo php $PATH/youtube-castnow.php & > /dev/null`
+    exit 1
+fi
 done
