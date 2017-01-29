@@ -5,9 +5,9 @@ and then casts to the chromecast. Idea is to play from youtube on my chromecast 
 This app searches my phone on the connected devices list on the router. As soon as I reach home, my phone auto-connects to wifi and hence, that will trigger the youtube-castnow app
 
 finmyphone.sh requires an argument as a search parameter to search the wifi devices connected. I usually give my Iphone's MAC addres.
-
+```
 sh findmyphone.sh MAC_ADDRESS
-
+```
 Requires castnow, youtube-dl and php (I know). Links:
 
 castnow: https://github.com/xat/castnow
@@ -28,5 +28,6 @@ or
 channel_list="channel_id1,channel_id2"
 
 Im running "findmyphone.sh" from cron as of now at 3PM weekdays. You can run it manually 
-
+```
 php youtube-castnow.php
+```
