@@ -1,7 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
-SUBNET=`ip addr show | grep eth0 | grep inet | awk -F " " {'print $2'}`
-PATTERN="$1"
+if [ ! -f .env ];
+then
+	echo "No .env file found."
+	exit 1
+fi
+
+`export $(cat .env | /usr/bin/xargs)`
+SUBNET=`ip addr show | /bin/grep eth0 | /bin/grep inet | awk -F " " {'print $2'}`
+
+PATTERN=${MAC_ADDRESS//,/\\|}
+
 PATH=$(/usr/bin/dirname "$0")
 if [ -z "$PATTERN" ]
 then
