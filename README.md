@@ -29,8 +29,7 @@ This app requires Google API key for authentication. It requieres you you place 
 This app also requieres a list of channels/plalists you want to play from. 
 It requieres you to place the channel list and playlists in the same .env file 
 
-Im running "findmyphone.sh" from cron as of now at 3PM weekdays which triggers youtube-castnow app if it finds my phone is connected to my wifi. You can run it manually 
-
+Im running "findmyphone.sh" from cron as of now at 3PM weekdays. You can run it manually 
 ```
 php youtube-castnow.php
 ```
