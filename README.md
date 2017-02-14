@@ -14,7 +14,7 @@ composer install
 ```
 
 This app is for casting youtube videos to the nearby chromecast. This app downloads the youtube video from the youtube channel provided
-and then casts to the chromecast. Idea is to play from youtube on my chromecast as soon as I reach home. Im using a raspberry-pi as the source machine.
+and then casts to the chromecast. Idea is to play from youtube on my chromecast as soon as I reach home and I'm using a raspberry-pi as the source machine to do everything for me.
 findmyphone looks up the list of of connected devices on the router and if it finds the any of the devices configured in .env, it triggers youtube-castnow to run which does the rest. As soon as I reach home, my phone auto-connects to wifi and hence, that will trigger the youtube-castnow app
 
 Replace the .env.example file with .env with valid values inside the file.
