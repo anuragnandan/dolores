@@ -1,22 +1,25 @@
 #!/bin/bash
 
-if [ ! -f .env ];
+path=$(/usr/bin/dirname "$0")
+
+if [ ! -f "$path"/.env ];
 then
 	echo "No .env file found."
 	exit 1
 fi
 
-`export $(cat .env | /usr/bin/xargs)`
-SUBNET=`ip addr show | /bin/grep eth0 | /bin/grep inet | awk -F " " {'print $2'}`
+export $(/bin/cat "$path"/.env | /usr/bin/xargs)
+
+if [ -z "$MAC_ADDRESS" ];
+then
+	echo "No MAC ADDRESS to scan for"
+	exit 1
+fi
+
+SUBNET=`/bin/ip addr show | /bin/grep eth0 | /bin/grep inet | /usr/bin/awk -F " " {'print $2'}`
 
 PATTERN=${MAC_ADDRESS//,/\\|}
 
-PATH=$(/usr/bin/dirname "$0")
-if [ -z "$PATTERN" ]
-then
-	echo "Needs an argument (MAC Address of the device) of the device to detect if it is home or connected."
-	exit 1
-fi
 while [ 1 ]; do
 	echo "Scanning for $PATTERN availability."
         OUT=`/usr/bin/sudo nmap -p 5353 -sV -O $SUBNET | /bin/grep $PATTERN`
@@ -27,7 +30,7 @@ while [ 1 ]; do
        		else
 			echo "Found\n"
 			`/bin/sleep 3`
-			`/usr/bin/sudo php $PATH/youtube-castnow.php & > /dev/null &`
+			`/usr/bin/sudo php $path/youtube-castnow.php & > /dev/null &`
 		exit 1
  fi
 done
