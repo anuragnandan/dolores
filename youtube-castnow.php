@@ -21,8 +21,8 @@ if($vid_id == false)
 	die("Failed to get Video url");
 $vid_url = "https://youtube.com/watch?v=$vid_id";
 $yt_download = "youtube-dl -o vid $vid_url; castnow vid";
-//system($yt_download);
-echo $yt_download;
+system($yt_download);
+//echo $yt_download;
 
 function get_channel_playlist($row = 0)
 {
