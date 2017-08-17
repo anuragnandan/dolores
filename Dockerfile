@@ -22,7 +22,6 @@ RUN apt-get update -y &&\
     php -r "unlink('composer-setup.php');" &&\
     mv composer.phar /usr/local/bin/composer
     
-#FROM composer/composer
 WORKDIR /app
 
 COPY findmyphone.sh /app/
@@ -33,4 +32,4 @@ COPY .env /app/
 RUN composer install
 
 CMD service cron start
-CMD echo "0 16 * * 1-5 bash -x /app/findmyphone.sh >> /var/spool/cron/crontabs/root"
+CMD echo "0 16 * * 1-5 bash -x /app/findmyphone.sh" >> /var/spool/cron/crontabs/root
