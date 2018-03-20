@@ -21,5 +21,5 @@ bash findmyphone.sh
 ```
 
 ### Requires
-- [Google API key] (https://developers.google.com/maps/documentation/javascript/get-api-key)
-- [Youtube Playlists] (https://www.youtube.com/watch?v=oRGEOtcZc0o)
+- [Google API key](https://developers.google.com/maps/documentation/javascript/get-api-key)
+- [Youtube Playlists](https://www.youtube.com/watch?v=oRGEOtcZc0o)
