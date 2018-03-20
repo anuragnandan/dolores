@@ -3,3 +3,5 @@ vendor/
 .env
 vid
 vid.part
+package-lock.json
+node_modules/
