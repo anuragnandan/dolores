@@ -1,14 +1,17 @@
-version: 2.1
+version: 2
 jobs:
   build:
+    working_directory: /
     docker:
-      - image: circleci/golang:1.13-alpine
+      - image: docker:17.05.0-ce-git
     steps:
       - checkout
-
-      # build and push Docker image
-      - run: |
-          TAG=0.1.$CIRCLE_BUILD_NUM
-          docker build -t anuragnandan/dolores:$TAG .
-          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-          docker push anuragnandan/dolores:$TAG
+      - run:
+          name: Build application Docker image
+          command: |
+            docker build -t anuragnandan/dolores:latest .
+      - deploy:
+          name: Push application Docker image
+          command: |
+              echo ${DOCKERHUB_USERNAME} | docker login ${DOCKERHUB_PASSWORD}
+              docker push "${ECR_ENDPOINT}/app:${CIRCLE_SHA1}"
