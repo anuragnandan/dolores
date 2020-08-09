@@ -1,16 +1,17 @@
 version: 2.1
-
-# Define the jobs we want to run for this project
 jobs:
   build:
     docker:
-      - image: anuragnandan/dolores:latest
+      - image: circleci/golang:1.13-alpine
     steps:
       - checkout
-      - run: my-command
 
-# Orchestrate our job run sequence
-workflows:
-  build_and_test:
-    jobs:
-      - build
+      - setup_remote_docker:
+          docker_layer_caching: true
+
+      # build and push Docker image
+      - run: |
+          TAG=0.1.$CIRCLE_BUILD_NUM
+          docker build -t anuragnandan/dolores:$TAG .
+          echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+          docker push anuragnandan/dolores:$TAG
