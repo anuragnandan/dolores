@@ -28,7 +28,7 @@ RUN apt-get update -y &&\
  COPY findmyphone.sh /app/
  COPY youtube-castnow.php /app/
  COPY composer.json /app/
- COPY .env /app/
+ COPY .env.example /app/.env
  
  RUN composer install
  
