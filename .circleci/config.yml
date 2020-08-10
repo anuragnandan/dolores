@@ -10,7 +10,7 @@ jobs:
       - run:
           name: Build application Docker image
           command: |
-            docker build -t anuragnandan/dolores:latest .
+            docker build -t anuragnandan/dolores:${CIRCLE_SHA1} .
       - deploy:
           name: Push application Docker image
           command: |
