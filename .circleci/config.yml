@@ -14,5 +14,5 @@ jobs:
       - deploy:
           name: Push application Docker image
           command: |
-              echo ${DOCKERHUB_USERNAME} | docker login ${DOCKERHUB_PASSWORD}
-              docker push "${ECR_ENDPOINT}/app:${CIRCLE_SHA1}"
+              docker login -u ${DOCKERHUB_USERNAME} -p ${DOCKERHUB_PASSWORD}
+              docker push anuragnandan/dolores:${CIRCLE_SHA1}
